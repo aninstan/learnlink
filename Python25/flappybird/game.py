@@ -1,5 +1,5 @@
 import pygame
-from settings import WIDTH, HEIGHT
+from settings import HEIGHT, HEIGHT
 
 pygame.font.init()
 
@@ -8,13 +8,13 @@ class GameIndicator:
         self.screen = screen
         self.font = pygame.font.SysFont('Bauhaus 93', 60)
         self.inst_font = pygame.font.SysFont('Bauhaus 93', 30)
-        self.color = pygame.color("white")
-        self.inst_color = pygame.color("black")
+        self.color = pygame.Color("white")
+        self.inst_color = pygame.Color("black")
 
     def show_score(self, int_score):
         bird_score = str(int_score)
         score = self.font.render(bird_score, True, self.color)
-        self.screen.blit(score, (WIDTH // 2, 50))
+        self.screen.blit(score, (HEIGHT // 2, 50))
 
     def instructions(self):
         inst_text1 = "Press SPACE to Jump,"
