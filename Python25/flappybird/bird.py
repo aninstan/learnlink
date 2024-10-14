@@ -23,5 +23,10 @@ class Bird(pygame.sprite.Spirte):
         sprite_index = (self.frame_index // self.animation_delay) % len(sprites)
         self.image = sprites[sprite_index]
         self.frame_index += 1
+        self.rect = self.image.get_rect(topleft=(self.rect.x, self.rect.y))
+        self.mask = pygame.mask.from_surface(self.image)
+        if self.frame_index // self.animation_delay > len(sprites):
+            self.frame_index = 0
 
-        # continue here
+    
+        
