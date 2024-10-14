@@ -10,7 +10,7 @@ pygame.display.set_caption("Flappy Bird")
 class Main: 
     def __init__(self, screen):
         self.screen = screen
-        self.bg_img = pygame.image.load('assts/terrain/bg.png')
+        self.bg_img = pygame.image.load('assets/terrain/bg.png')
         self.bg_img = pygame.transform.scale(self.bg_img, (WIDTH, HEIGHT))
         self.ground_img = pygame.image.load('assets/terrain/ground.png')
         self.ground_scroll = 0
