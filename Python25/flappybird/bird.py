@@ -28,5 +28,10 @@ class Bird(pygame.sprite.Spirte):
         if self.frame_index // self.animation_delay > len(sprites):
             self.frame_index = 0
 
-    
-        
+    def _jump(self):
+        self.direction.y = self.jump_move
+
+    def update(self, is_jump):
+        if is_jump:
+            self._jump()
+        self._animate()
