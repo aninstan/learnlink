@@ -1,12 +1,12 @@
 import pygame
 
 class Pipe(pygame.sprite.Sprite):
-    def __init__(self, pos, height, height, flip):
+    def __init__(self, pos, width, height, flip):
         super().__init__()
-        self.height = height
+        self.width = width
         img_path = 'assets/terrain/pipe.png'
         self.image = pygame.image.load(img_path)
-        self.image = pygame.transform.scale(self.image, (height, height))
+        self.image = pygame.transform.scale(self.image, (width, height))
 
         if flip:
             flipped_image = pygame.transform.flip(self.image, False, True)
@@ -16,5 +16,5 @@ class Pipe(pygame.sprite.Sprite):
 
     def update(self, x_shift):
         self.rect.x += x_shift
-        if self.rect.x < (-self.height):
+        if self.rect.x < (-self.width):
             self.kill()

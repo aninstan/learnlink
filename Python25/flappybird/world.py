@@ -2,7 +2,7 @@ import pygame
 from pipe import Pipe
 from bird import Bird
 from game import GameIndicator
-from settings import HEIGHT, HEIGHT, pipe_size, pipe_gap, pipe_pair_heights
+from settings import WIDTH, HEIGHT, pipe_size, pipe_gap, pipe_pair_heights
 import random
 
 class World:
@@ -23,8 +23,8 @@ class World:
     def _add_pipe(self):
         pipe_pair_height = random.choice(pipe_pair_heights)
         top_pipe_height, bottom_pipe_height = pipe_pair_height[0] * pipe_size, pipe_pair_height[1] * pipe_size
-        pipe_top = Pipe((HEIGHT, 0 - (bottom_pipe_height + pipe_gap)), pipe_size, HEIGHT, True)
-        pipe_bottom = Pipe((HEIGHT, top_pipe_height + pipe_gap), pipe_size, HEIGHT, False)
+        pipe_top = Pipe((WIDTH, 0 - (bottom_pipe_height + pipe_gap)), pipe_size, HEIGHT, True)
+        pipe_bottom = Pipe((WIDTH, top_pipe_height + pipe_gap), pipe_size, HEIGHT, False)
 
         self.pipes.add(pipe_top)
         self.pipes.add(pipe_bottom)
@@ -32,7 +32,7 @@ class World:
 
     def _generate_world(self):
         self._add_pipe()
-        bird = Bird((HEIGHT // 2 - pipe_size, HEIGHT // 2 - pipe_size), 30)
+        bird = Bird((WIDTH // 2 - pipe_size, HEIGHT // 2 - pipe_size), 30)
         self.player.add(bird)
 
     #spillfysikk
@@ -62,7 +62,7 @@ class World:
                 self.passed = True
 
     def update(self, player_event = None):
-        if self.current_pipe.rect.centerx <= (HEIGHT // 2) - pipe_size:
+        if self.current_pipe.rect.centerx <= (WIDTH // 2) - pipe_size:
             self._add_pipe()
 
         self.pipes.update(self.world_shift)
